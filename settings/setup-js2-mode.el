@@ -268,3 +268,4 @@
       (indent-line-to offset))))
 
 (provide 'setup-js2-mode)
+

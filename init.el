@@ -1,8 +1,9 @@
 ; list of packages
 (setq package-list '(
+  neotree
+  web-mode
   coffee-mode
   js2-refactor
-  rjsx-mode
   fzf
   spacemacs-theme
   ruby-mode
@@ -28,7 +29,6 @@
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
 (setq package-enable-at-startup nil)
@@ -84,6 +84,7 @@
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'shell '(require 'setup-shell))
 (eval-after-load 'flycheck '(require 'setup-flycheck-theme))
+(require 'neotree)
 (require 'setup-rgrep)
 (require 'setup-yasnippet)
 ;; Default setup of smartparens
@@ -98,8 +99,9 @@
 ;; Language specific setup files
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
 (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
-(eval-after-load 'rjsx-mode '(require 'setup-rjsx-mode))
+(eval-after-load 'web-mode '(require 'setup-web-mode))
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
+(eval-after-load 'coffee-mode '(require 'setup-coffee-mode))
 ;; Load stuff on demand
 (autoload 'auto-complete-mode "auto-complete" nil t)
 ; Load theme
@@ -113,6 +115,7 @@
 ;(when is-mac (require 'mac))
 ; Shortcuts
 (global-set-key (kbd "C-p") 'fzf-git)
+(global-set-key (kbd "C-u") 'neotree-toggle)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -120,7 +123,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (coffee-mode zenburn-theme whitespace-cleanup-mode wgrep visual-regexp string-edit spacemacs-theme smartparens ruby-electric ruby-compilation rjsx-mode perspective page-break-lines markdown-mode jump js2-refactor ivy ido-vertical-mode ido-completing-read+ ido-at-point git-commit fzf flycheck flx-ido flatland-theme fish-completion exec-path-from-shell evil dracula-theme dockerfile-mode))))
+    (web-mode neotree whitespace-cleanup-mode wgrep visual-regexp string-edit spacemacs-theme smartparens ruby-electric ruby-compilation perspective page-break-lines markdown-mode jump js2-refactor ivy ido-vertical-mode ido-completing-read+ ido-at-point git-commit fzf flycheck flx-ido flatland-theme fish-completion exec-path-from-shell evil dracula-theme dockerfile-mode coffee-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
