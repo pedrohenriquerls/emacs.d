@@ -1,5 +1,6 @@
 ; list of packages
 (setq package-list '(
+  go-mode
   neotree
   web-mode
   coffee-mode
@@ -94,14 +95,17 @@
           js-mode-hook
           java-mode
           ruby-mode
+          web-mode
+          go-mode
           markdown-mode)
   (add-hook it 'turn-on-smartparens-mode))
 ;; Language specific setup files
+(eval-after-load 'web-mode '(require 'setup-web-mode))
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
 (eval-after-load 'ruby-mode '(require 'setup-ruby-mode))
-(eval-after-load 'web-mode '(require 'setup-web-mode))
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
 (eval-after-load 'coffee-mode '(require 'setup-coffee-mode))
+(eval-after-load 'go-mode '(require 'setup-go-mode))
 ;; Load stuff on demand
 (autoload 'auto-complete-mode "auto-complete" nil t)
 ; Load theme
@@ -116,3 +120,8 @@
 ; Shortcuts
 (global-set-key (kbd "C-p") 'fzf-git)
 (global-set-key (kbd "C-u") 'neotree-toggle)
+;; Set tab-width size
+(setq css-indent-offset 2)
+(setq tab-width 2) ; or any other preferred value
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
