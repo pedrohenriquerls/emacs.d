@@ -19,7 +19,11 @@
 (setq-default js2-strict-missing-semi-warning nil)
 (setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
 
-(add-hook 'js2-mode-hook (lambda () (flycheck-mode 1)))
+
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (web-mode 1)
+             (flycheck-mode 1)))
 
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
