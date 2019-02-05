@@ -1,5 +1,6 @@
 ; list of packages
 (setq package-list '(
+  yaml-mode
   go-mode
   neotree
   web-mode
@@ -8,8 +9,10 @@
   fzf
   spacemacs-theme
   ruby-mode
+  rbenv
   inf-ruby
   flycheck
+  flycheck-pos-tip
   string-edit
   visual-regexp
   wgrep
@@ -63,6 +66,7 @@
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
+(setq neo-smart-open t)
 
 ;; Are we on a mac?
 (setq is-mac (equal system-type 'darwin))
@@ -84,7 +88,7 @@
 (eval-after-load 'org '(require 'setup-org))
 (eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'shell '(require 'setup-shell))
-(eval-after-load 'flycheck '(require 'setup-flycheck-theme))
+(eval-after-load 'flycheck '(require 'setup-flycheck))
 (require 'neotree)
 (require 'setup-rgrep)
 (require 'setup-yasnippet)
@@ -106,6 +110,7 @@
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
 (eval-after-load 'coffee-mode '(require 'setup-coffee-mode))
 (eval-after-load 'go-mode '(require 'setup-go-mode))
+(eval-after-load 'yaml-mode '(require 'setup-yaml-mode))
 ;; Load stuff on demand
 (autoload 'auto-complete-mode "auto-complete" nil t)
 ; Load theme
