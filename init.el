@@ -98,11 +98,17 @@
 (--each '(css-mode-hook
           js-mode-hook
           java-mode
+	  coffee-mode
           ruby-mode
           web-mode
           go-mode
           markdown-mode)
   (add-hook it 'turn-on-smartparens-mode))
+;; Set tab-width size
+(setq css-indent-offset 2)
+(setq tab-width 2) ; or any other preferred value
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 ;; Language specific setup files
 (eval-after-load 'web-mode '(require 'setup-web-mode))
 (eval-after-load 'js2-mode '(require 'setup-js2-mode))
@@ -125,8 +131,3 @@
 ; Shortcuts
 (global-set-key (kbd "C-p") 'fzf-git)
 (global-set-key (kbd "C-u") 'neotree-toggle)
-;; Set tab-width size
-(setq css-indent-offset 2)
-(setq tab-width 2) ; or any other preferred value
-(defvaralias 'c-basic-offset 'tab-width)
-(defvaralias 'cperl-indent-level 'tab-width)

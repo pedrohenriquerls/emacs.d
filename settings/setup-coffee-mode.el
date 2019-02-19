@@ -6,3 +6,4 @@
 ;; only show bad whitespace
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab))
 (custom-set-variables '(coffee-tab-width 2))
+(provide 'setup-coffee-mode)
