@@ -7,6 +7,7 @@
   neotree
   web-mode
   coffee-mode
+  flymake-ruby
   js2-refactor
   fzf
   spacemacs-theme

@@ -16,7 +16,7 @@
 
 (add-hook 'coffee-mode-hook
           '(lambda ()
+             (setq flycheck-checker 'coffee-coffeelint)
              (flycheck-mode 1)))
-
 
 (provide 'setup-coffee-mode)
