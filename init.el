@@ -1,6 +1,7 @@
 ; list of packages
 (setq package-list '(
   highlight-indent-guides
+  highlight-indentation
   yaml-mode
   go-mode
   neotree
