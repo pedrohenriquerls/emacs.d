@@ -37,6 +37,9 @@ clean buffer we're an order of magnitude laxer about checking."
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 
+;; use coffee with coffee-mode
+(flycheck-add-mode 'coffee 'coffee-mode)
+
 ;; customize flycheck temp file prefix
 (setq-default flycheck-temp-prefix ".flycheck")
 

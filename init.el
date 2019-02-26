@@ -1,5 +1,6 @@
 ; list of packages
 (setq package-list '(
+  highlight-indent-guides
   yaml-mode
   go-mode
   neotree
@@ -54,13 +55,36 @@
 (add-to-list 'load-path settings-dir)
 ;; Write all autosave files in the tmp dir
 (setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+      `(("/tmp/.*" ,temporary-file-directory t)))
 
 ;; Don't write lock-files, I'm the only one here
 (setq create-lockfiles nil)
 
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
+
+;; Hiligh indentation
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-auto-odd-face-perc 14)
+(setq highlight-indent-guides-auto-even-face-perc 15)
+(setq highlight-indent-guides-auto-character-face-perc 20)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+;(set-face-background 'highlight-indent-guides-odd-face "darkgray")
+;(set-face-background 'highlight-indent-guides-even-face "dimgray")
+;(set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+(setq highlight-indent-guides-character ?\|)
+
+;; Set path to emacs view
+(setq frame-title-format
+      (list (format "%s %%S: %%j " (system-name))
+        '(buffer-file-name "%f" (dired-directory dired-directory "%b"))))
+(defun show-file-name ()
+  "Show the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+
+(global-set-key [C-f1] 'show-file-name)
 
 ;; Save point position between sessions
 (require 'saveplace)
@@ -86,7 +110,7 @@
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
 (eval-after-load 'org '(require 'setup-org))
-(eval-after-load 'dired '(require 'setup-dired))
+;(eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'shell '(require 'setup-shell))
 (eval-after-load 'flycheck '(require 'setup-flycheck))
 (require 'neotree)
