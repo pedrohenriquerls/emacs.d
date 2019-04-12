@@ -1,6 +1,7 @@
 ; list of packages
 (setq package-list '(
   highlight-indent-guides
+  xclip
   highlight-indentation
   yaml-mode
   go-mode
@@ -9,6 +10,7 @@
   coffee-mode
   flymake-ruby
   js2-refactor
+  auto-complete
   fzf
   spacemacs-theme
   ruby-mode
@@ -52,7 +54,7 @@
 ;; Set path to dependencies
 (setq settings-dir
       (expand-file-name "settings" user-emacs-directory))
-
+(ac-config-default)
 ;; Set up load path
 (add-to-list 'load-path settings-dir)
 ;; Write all autosave files in the tmp dir
@@ -106,8 +108,8 @@
 (process-send-string proc text)
 (process-send-eof proc))))
 
-(setq interprogram-cut-function 'paste-to-osx)
-(setq interprogram-paste-function 'copy-from-osx)
+;(setq interprogram-cut-function 'paste-to-osx)
+;(setq interprogram-paste-function 'copy-from-osx)
 (global-linum-mode t)
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
@@ -145,6 +147,7 @@
 (eval-after-load 'yaml-mode '(require 'setup-yaml-mode))
 ;; Load stuff on demand
 (autoload 'auto-complete-mode "auto-complete" nil t)
+(autoload 'xclip-mode "xclip" nil t)
 ; Load theme
 (load-theme 'spacemacs-dark t)
 ;; Setup environment variables from the user's shell.
@@ -157,3 +160,18 @@
 ; Shortcuts
 (global-set-key (kbd "C-p") 'fzf-git)
 (global-set-key (kbd "C-u") 'neotree-toggle)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
+ '(package-selected-packages
+   (quote
+    (auto-complete yaml-mode whitespace-cleanup-mode wgrep web-mode visual-regexp string-edit spacemacs-theme smartparens rbenv neotree markdown-mode js2-refactor inf-ruby ido-vertical-mode ido-completing-read+ ido-at-point highlight-indentation highlight-indent-guides go-mode fzf flymake-ruby flycheck-pos-tip flx-ido exec-path-from-shell dockerfile-mode coffee-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
